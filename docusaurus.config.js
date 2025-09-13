@@ -77,7 +77,22 @@ const config = {
     ],
   ],
 
- /* plugins: [
+  plugins: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['en'],
+        indexDocs: true,
+        indexPages: true,
+        highlightSearchTermsOnTargetPage: true,
+        searchResultLimits: 8, // ✅ fixed here
+      },
+    ],
+  ],
+
+/*
+  themes: [
     [
       '@easyops-cn/docusaurus-search-local',
       {
