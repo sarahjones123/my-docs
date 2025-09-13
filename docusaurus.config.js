@@ -77,7 +77,7 @@ const config = {
     ],
   ],
 
-  plugins: [
+ /* plugins: [
     [
       '@easyops-cn/docusaurus-search-local',
       {
@@ -90,6 +90,8 @@ const config = {
       },
     ],
   ],
+
+  */
   
   themeConfig: {
     // Replace with your project's social card
