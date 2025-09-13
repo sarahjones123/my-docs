@@ -19,12 +19,12 @@ const config: Config = {
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   // Use different baseUrl for development vs production
-  baseUrl: process.env.NODE_ENV === 'development' ? '/' : '/nGenue_docs/',
+  baseUrl: process.env.NODE_ENV === 'development' ? '/' : '/my-docs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'sarahjones123', // Usually your GitHub org/user name.
-  projectName: 'nGenue_docs', // Usually your repo name.
+  projectName: 'my-docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
