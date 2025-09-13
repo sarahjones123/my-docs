@@ -2,46 +2,37 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Welcome to nGenue
 
-Let's discover **Docusaurus in less than 5 minutes**.
+**nGenue** is your best choice for wholesale and retail natural gas operations - an end-to-end solution serving the comprehensive needs of the natural gas industry.
+
+![nGenue Banner](https://via.placeholder.com/800x200/4A5568/FFFFFF?text=nGenue+-+Natural+Gas+Operations+Platform)
+
+## What can you do with nGenue?
+
+nGenue provides a fully integrated operational system designed specifically for natural gas companies, enabling you to better manage your risk and take care of your customers in an ever-evolving market.
+
+### Key Features
+
+- **Customer Management** - Comprehensive customer lifecycle management with specialized natural gas communications and contract renewal processes
+- **Billing Solutions** - Automated system-managed billing with support for utility consolidated billing scenarios
+- **ETRM (Energy Trading & Risk Management)** - Full trading support with integrated Mark-to-Market and Price Exposure reporting
+- **Credit Management** - Real-time credit exposure management designed for the physical nature of the natural gas industry
 
 ## Getting Started
 
-Get started by **creating a new site**.
+Choose a section below to learn more about nGenue's capabilities:
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+- [Customer Management](./customer-management/overview) - Learn about customer communications, contract renewal, and customer care
+- [Billing](./billing/overview) - Discover automated billing processes and invoicing features
+- [ETRM](./etrm/overview) - Explore trading, risk management, and counterparty credit features
 
-### What you'll need
+## Quick Links
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- **Video Walkthrough**: [Watch our comprehensive demo](https://www.youtube.com/watch?v=HnG4dtuIkmE)
+- **nGenue Website**: [Visit ngenue.com](https://ngenue.com)
+- **Events & News**: [Stay updated with nGenue events](https://ngenue.com/blogevents/)
 
-## Generate a new site
+---
 
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+*Ready to transform your natural gas operations? Explore the documentation to learn how nGenue can streamline your business processes.*

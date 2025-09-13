@@ -1,21 +1,23 @@
 {
-  "name": "my-docs",
+  "name": "ngenue-knowledge-base",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "docusaurus start",
+    "start": "docusaurus start --host 0.0.0.0 --port 5000",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@docusaurus/core": "3.8.1",
     "@docusaurus/preset-classic": "3.8.1",
+    "@easyops-cn/docusaurus-search-local": "^0.52.1",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^2.0.0",
     "prism-react-renderer": "^2.3.0",
@@ -24,7 +26,9 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.8.1",
-    "@docusaurus/types": "3.8.1"
+    "@docusaurus/tsconfig": "3.8.1",
+    "@docusaurus/types": "3.8.1",
+    "typescript": "~5.6.2"
   },
   "browserslist": {
     "production": [
