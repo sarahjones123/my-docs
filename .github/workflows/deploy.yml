@@ -19,6 +19,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install search plugin
+        run: npm install --save @easyops-cn/docusaurus-search-local
+
+      - name: Install search algolia
+        run: npm install --save @docusaurus/theme-search-algolia
+
       - name: Build site
         run: npm run build
 
