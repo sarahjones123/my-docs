@@ -52,8 +52,6 @@ const config = {
           sidebarPath: './sidebars.js',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
@@ -125,19 +123,24 @@ const config = {
           label: 'Documentation',
         },
         {
-          label: 'Guides',
+          label: 'ETRM',
           position: 'left',
-          to: '/docs/intro',
+          to: '/docs/etrm/overview',
         },
         {
-          label: 'API Reference',
+          label: 'Retail',
           position: 'left',
-          to: '/docs/intro',
+          to: '/docs/retail/overview',
         },
         {
-          label: 'Support',
+          label: 'EDI',
           position: 'left',
-          to: '/docs/testimonials',
+          to: '/docs/edi/overview',
+        },
+        {
+          label: 'PQE',
+          position: 'left',
+          to: '/docs/pqe/overview',
         },
         {
           label: 'Resources',

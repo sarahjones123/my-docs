@@ -6,8 +6,6 @@ sidebar_position: 1
 
 **nGenue** is your best choice for wholesale and retail natural gas operations - an end-to-end solution serving the comprehensive needs of the natural gas industry.
 
-![nGenue Banner](https://via.placeholder.com/800x200/4A5568/FFFFFF?text=nGenue+-+Natural+Gas+Operations+Platform)
-
 ## What can you do with nGenue?
 
 nGenue provides a fully integrated operational system designed specifically for natural gas companies, enabling you to better manage your risk and take care of your customers in an ever-evolving market.
