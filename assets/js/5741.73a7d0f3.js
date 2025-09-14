@@ -1,0 +1,1 @@
+(self.webpackChunkngenue_knowledge_base=self.webpackChunkngenue_knowledge_base||[]).push([[5741],{5741:()=>{}}]);

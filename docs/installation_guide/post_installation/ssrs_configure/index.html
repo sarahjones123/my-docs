@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-installation_guide/post_installation/ssrs_configure" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.8.1">
+<title data-rh="true">Install and configure Microsoft SQL Server Reporting Services (SSRS) | nGenue Knowledge Base</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://sarahjones123.github.io/my-docs/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://sarahjones123.github.io/my-docs/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://sarahjones123.github.io/my-docs/docs/installation_guide/post_installation/ssrs_configure"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Install and configure Microsoft SQL Server Reporting Services (SSRS) | nGenue Knowledge Base"><meta data-rh="true" name="description" content="This document provides a comprehensive, step-by-step guide to setting up Microsoft SQL Server Reporting Services (SSRS). It covers the installation of SQLServerReportingServices.exe and the configuration of the report server using Report Server Configuration Manager. Additionally, you&#x27;ll learn how to generate reports effectively, ensuring smooth integration with your SQL Server environment."><meta data-rh="true" property="og:description" content="This document provides a comprehensive, step-by-step guide to setting up Microsoft SQL Server Reporting Services (SSRS). It covers the installation of SQLServerReportingServices.exe and the configuration of the report server using Report Server Configuration Manager. Additionally, you&#x27;ll learn how to generate reports effectively, ensuring smooth integration with your SQL Server environment."><link data-rh="true" rel="icon" href="/my-docs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://sarahjones123.github.io/my-docs/docs/installation_guide/post_installation/ssrs_configure"><link data-rh="true" rel="alternate" href="https://sarahjones123.github.io/my-docs/docs/installation_guide/post_installation/ssrs_configure" hreflang="en"><link data-rh="true" rel="alternate" href="https://sarahjones123.github.io/my-docs/docs/installation_guide/post_installation/ssrs_configure" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Installation guide","item":"https://sarahjones123.github.io/my-docs/docs/installation_guide/overview"},{"@type":"ListItem","position":2,"name":"SSRS configuration","item":"https://sarahjones123.github.io/my-docs/docs/installation_guide/post_installation/ssrs_configure"}]}</script><link rel="alternate" type="application/rss+xml" href="/my-docs/blog/rss.xml" title="nGenue Knowledge Base RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/my-docs/blog/atom.xml" title="nGenue Knowledge Base Atom Feed"><link rel="stylesheet" href="/my-docs/assets/css/styles.4689ac0f.css">
+<script src="/my-docs/assets/js/runtime~main.abf7fc3c.js" defer="defer"></script>
+<script src="/my-docs/assets/js/main.c324761c.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t="light";var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",e||t),document.documentElement.setAttribute("data-theme-choice",e||t)}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/my-docs/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/my-docs/"><div class="navbar__logo"><img src="/my-docs/img/logo.svg" alt="nGenue Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/my-docs/img/logo.svg" alt="nGenue Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">nGenue</b></a><a class="navbar__item navbar__link" href="/my-docs/docs/intro">Documentation</a><a class="navbar__item navbar__link" href="/my-docs/docs/etrm/overview">ETRM</a><a class="navbar__item navbar__link" href="/my-docs/docs/retail/overview">Retail</a><a class="navbar__item navbar__link" href="/my-docs/docs/edi/overview">EDI</a><a class="navbar__item navbar__link" href="/my-docs/docs/pqe/overview">PQE</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">Resources</a><ul class="dropdown__menu"><li><a href="https://ngenue.com/community" target="_blank" rel="noopener noreferrer" class="dropdown__link">Community<svg width="12" height="12" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li><a href="https://ngenue.com/blogevents/" target="_blank" rel="noopener noreferrer" class="dropdown__link">Events<svg width="12" height="12" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li><a href="https://ngenue.com/roadmap" target="_blank" rel="noopener noreferrer" class="dropdown__link">Roadmap<svg width="12" height="12" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my-docs/docs/intro">Welcome to nGenue</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my-docs/docs/introduction/features_ngenue">Key functionalities</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my-docs/docs/testimonials">Testimonials</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/my-docs/docs/installation_guide/overview">Installation guide</a><button aria-label="Collapse sidebar category &#x27;Installation guide&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/my-docs/docs/installation_guide/system_requirements">System Requirements</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/my-docs/docs/installation_guide/sql_server_installation">Install Microsoft SQL Server</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/my-docs/docs/installation_guide/restore_database">Restore Database</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/my-docs/docs/installation_guide/run_ngenue_application">Running the nGenue application</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/my-docs/docs/installation_guide/post_installation/ssrs_configure">SSRS configuration</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/my-docs/docs/installation_guide/post_installation/edi_configure">EDI configuration</a></li></ul></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my-docs/docs/faqs/overview">FAQs</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/my-docs/docs/glossary/">Glossary</a></li></ul></nav><button type="button" title="Collapse sidebar" aria-label="Collapse sidebar" class="button button--secondary button--outline collapseSidebarButton_PEFL"><svg width="20" height="20" aria-hidden="true" class="collapseSidebarButtonIcon_kv0_"><g fill="#7a7a7a"><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"></path><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"></path></g></svg></button></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/my-docs/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/my-docs/docs/installation_guide/overview"><span>Installation guide</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">SSRS configuration</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Install and configure Microsoft SQL Server Reporting Services (SSRS)</h1></header>
+<p>This document provides a comprehensive, step-by-step guide to setting up Microsoft SQL Server Reporting Services (SSRS). It covers the installation of <strong>SQLServerReportingServices.exe</strong> and the configuration of the report server using <strong>Report Server Configuration Manager.</strong> Additionally, you&#x27;ll learn how to generate reports effectively, ensuring smooth integration with your SQL Server environment.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="install-sql-server-reporting-services">Install SQL Server Reporting Services<a href="#install-sql-server-reporting-services" class="hash-link" aria-label="Direct link to Install SQL Server Reporting Services" title="Direct link to Install SQL Server Reporting Services">​</a></h2>
+<ol>
+<li>Download the installer from the Microsoft Download Center here: <a href="https://www.microsoft.com/en-us/download/details.aspx?id=100122" target="_blank" rel="noopener noreferrer">Microsoft SQL Server 2019 Reporting Services.</a></li>
+<li>Run the <strong>SQLServerReportingServices.exe</strong> executable file to launch the setup wizard.</li>
+<li>On the setup wizard&#x27;s first screen, select <strong>Install Reporting Services</strong> to begin the installation.
+<img decoding="async" loading="lazy" alt="post_1" src="/my-docs/assets/images/post_1-66ce08a42f806a078cb00eb3d6a46209.png" width="697" height="602" class="img_ev3q"></li>
+<li>If using a paid edition, enter a valid product key. Alternatively, select the <strong>Free Developer Edition</strong> radio button. Click <strong>Next</strong> to continue.
+<img decoding="async" loading="lazy" alt="post_2" src="/my-docs/assets/images/post_2-a9f701778fff4bea54412f7e9ba6fcd2.png" width="697" height="602" class="img_ev3q"></li>
+<li>Agree to the license terms by selecting the <strong>I accept the license terms</strong> checkbox. Click <strong>Next.</strong>
+<img decoding="async" loading="lazy" alt="post_3" src="/my-docs/assets/images/post_3-68e561f49594baae99f7631ef265f46b.png" width="697" height="602" class="img_ev3q"></li>
+<li>You will be reminded that an installed SQL Server is required to configure the SSRS server. At this stage, you will see an option to install Reporting Services. Click <strong>Next.</strong>
+<img decoding="async" loading="lazy" alt="post_4" src="/my-docs/assets/images/post_4-c3ce21a304a90cd3c3dc7a03e600fd06.png" width="697" height="602" class="img_ev3q"></li>
+<li>By default, SSRS installs on the <strong>&quot;C:&quot;</strong> drive. You can change the installation directory if needed.</li>
+<li>Click <strong>Install</strong> to begin the installation process.
+<img decoding="async" loading="lazy" alt="post_5" src="/my-docs/assets/images/post_5-615951aa53b22fb4417026d6bcee3021.png" width="697" height="602" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="post_6" src="/my-docs/assets/images/post_6-0be5d4861d4eaa6d4db25784c3d5b5af.png" width="697" height="602" class="img_ev3q"></li>
+<li>Congratulations! The SSRS is successfully installed.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="configure-the-report-server-using-report-server-configuration-manager">Configure the report server using Report Server Configuration Manager<a href="#configure-the-report-server-using-report-server-configuration-manager" class="hash-link" aria-label="Direct link to Configure the report server using Report Server Configuration Manager" title="Direct link to Configure the report server using Report Server Configuration Manager">​</a></h2>
+<p>Once SSRS is installed, it&#x27;s time to complete some basic configurations before using it:</p>
+<ol>
+<li>
+<p>Click <strong>Configure report server</strong> to open the <strong>Configuration Manager</strong> screen.
+<img decoding="async" loading="lazy" alt="post_7" src="/my-docs/assets/images/post_7-e5c74c02f0e82dd6f2a98c6a6f4435c5.png" width="697" height="602" class="img_ev3q"></p>
+</li>
+<li>
+<p>The <strong>Report Servers Configuration Manager</strong> windows will display the installed SQL server instance.</p>
+</li>
+<li>
+<p>Verify the information is correct. Click <strong>Connect</strong> to establish a connection to the SSRS server.
+<img decoding="async" loading="lazy" alt="post_8" src="/my-docs/assets/images/post_8-ac0d0cfad233c0148a3619d68da5ac51.png" width="1197" height="830" class="img_ev3q"></p>
+</li>
+<li>
+<p>In the <strong>Service Account</strong> window, configure the service account for reporting services.
+5. Choose between a <em>built-in</em> account or a <em>custom account</em> depending on your requirements.
+6. Click <strong>Apply</strong> to save settings.
+<img decoding="async" loading="lazy" alt="post_9" src="/my-docs/assets/images/post_9-4df95bfff2c16a9cd2a58f6f0d34422a.png" width="973" height="809" class="img_ev3q"></p>
+<p>!!! note &quot;Note&quot;
+If the Apply button is disabled, select <strong>Use another account</strong>, then re-check <strong>Use built-in account</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Web Service URL</strong> window, the default TCP port is set to <strong>80</strong> (can be changed).</p>
+</li>
+<li>
+<p>Click <strong>Apply</strong> to save changes.
+<img decoding="async" loading="lazy" alt="post_10" src="/my-docs/assets/images/post_10-dd5eef42318bcccd4e88082a7323ddc9.png" width="973" height="809" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="post_11" src="/my-docs/assets/images/post_11-b0df6bb011b52c703fd20b3b877247e3.png" width="973" height="809" class="img_ev3q"></p>
+</li>
+<li>
+<p>Click on the <strong>Database</strong> tab. Here, you create the databases ReportServer and ReportServerTempDB.</p>
+<ol>
+<li>
+<p>Click <strong>Change Database</strong> to select or create a new database.
+<img decoding="async" loading="lazy" alt="post_12" src="/my-docs/assets/images/post_12-351ca323af6dddbbfe9957fd76e73c08.png" width="973" height="809" class="img_ev3q"></p>
+</li>
+<li>
+<p>To create a fresh installation of SSRS, leave the <strong>Create a new report server database</strong> radio button checked. Or, select the <strong>Choose an existing report server database</strong> radio button to point Reporting Services to an existing set of databases. Click <strong>Next.</strong>
+<img decoding="async" loading="lazy" alt="post_13" src="/my-docs/assets/images/post_13-0f92284d2c53331feae72f3cc00b35d6.png" width="973" height="809" class="img_ev3q"></p>
+</li>
+<li>
+<p>Before proceeding with database creation, it&#x27;s a good idea to verify that the connection to the SQL Server is successful using your credentials. To do so, click <strong>Test Connection</strong>.
+<img decoding="async" loading="lazy" alt="post_14" src="/my-docs/assets/images/post_14-563a86b6d685f6e0a92093f53febcf66.png" width="678" height="498" class="img_ev3q"></p>
+</li>
+<li>
+<p>If the connection is successful, click <strong>OK.</strong>
+<img decoding="async" loading="lazy" alt="post_15" src="/my-docs/assets/images/post_15-b08c6ae19a792aec35008e4c76dcf46b.png" width="847" height="622" class="img_ev3q"></p>
+</li>
+<li>
+<p>Next, enter a name for your database.</p>
+</li>
+<li>
+<p>Keep the remaining fields as default. Click <strong>Next.</strong>
+<img decoding="async" loading="lazy" alt="post_16" src="/my-docs/assets/images/post_16-e0c8c1139ddcdf274d874944c7f6b7c5.png" width="845" height="621" class="img_ev3q"></p>
+</li>
+<li>
+<p>In the <strong>Credentials</strong> window, keep the <strong>Authentication Type</strong> as <strong>Service Credentials.</strong></p>
+</li>
+<li>
+<p>Click <strong>Next.</strong>
+<img decoding="async" loading="lazy" alt="post_17" src="/my-docs/assets/images/post_17-da2b0c633e05564e248d5c2a6887f84a.png" width="847" height="624" class="img_ev3q"></p>
+</li>
+<li>
+<p>In the <strong>Summary</strong> window, verify the information is correct before proceeding with the database creations. If everything looks good, click <strong>Next</strong> to proceed with the database creation.
+<img decoding="async" loading="lazy" alt="post_18" src="/my-docs/assets/images/post_18-76c52ec4581c0f257284e1c723789b5a.png" width="847" height="622" class="img_ev3q"></p>
+</li>
+<li>
+<p>Ensure the steps shows <strong>Success</strong> in the <strong>Progress and Finish</strong> window. Once confirmed, click <strong>Finish</strong> to complete the database creation setup.
+<img decoding="async" loading="lazy" alt="post_19" src="/my-docs/assets/images/post_19-48aaa70e76aab450befb5f9f62277fd0.png" width="847" height="625" class="img_ev3q"></p>
+</li>
+</ol>
+</li>
+<li>
+<p>Go to the <strong>Web Portal URL</strong> window and click <strong>Apply.</strong> The SSRS will restart to apply the changes.
+<img decoding="async" loading="lazy" alt="post_20" src="/my-docs/assets/images/post_20-32a0c47373e0095444918940d034e365.png" width="1215" height="937" class="img_ev3q"></p>
+</li>
+<li>
+<p>Verify the URL created:
+4. Go to the <strong>Web Service URL</strong> tab, and click on the URL link. You should see the default browser open to the <strong>Report Server</strong> screen.
+<img decoding="async" loading="lazy" alt="post_21" src="/my-docs/assets/images/post_21-63df48933a700597922c9d19973b8bfc.png" width="1217" height="1013" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="post_22" src="/my-docs/assets/images/post_22-89cb30c7078e3dd9d619247dc30a206e.png" width="995" height="373" class="img_ev3q"></p>
+<ol>
+<li>Go to the <strong>Web Portal URL</strong> tab, and click on the URL link. You should see the default browser open to the <strong>Reporting Service</strong> screen.
+<img decoding="async" loading="lazy" alt="post_23" src="/my-docs/assets/images/post_23-1fa38880657f17811bf0337b66be785f.png" width="1215" height="547" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="post_24" src="/my-docs/assets/images/post_24-98db9203fc00d3581ea3c0fff83333b7.png" width="960" height="292" class="img_ev3q"></li>
+</ol>
+</li>
+</ol>
+<p>You have now a fully functional SSRS installation that is ready to deploy reports.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="configuring-the-sql-server-reporting-services">Configuring the SQL Server Reporting Services<a href="#configuring-the-sql-server-reporting-services" class="hash-link" aria-label="Direct link to Configuring the SQL Server Reporting Services" title="Direct link to Configuring the SQL Server Reporting Services">​</a></h2>
+<p>In this step, we&#x27;ll upload the necessary files to SQL Server Reporting Services and configure them accordingly.</p>
+<ol>
+<li>
+<p>Download the following files to your local machine. These files will be available on a SharePoint site provided by your organization. Please contact the nGenue administrator to get the SharePoint link.</p>
+<p>The required files are:<br>
+<strong><code>ReportAPI.zip, nTrackdatastructure.rds, settlementinvoice.rdl</code></strong>, and <strong><code>Styles.rsd.</code></strong></p>
+</li>
+<li>
+<p>In the SSRS application, go to the <strong>Web Portal URL</strong> section.</p>
+</li>
+<li>
+<p>Click on the <strong>Web Portal URL</strong> link. This will launch the default browser and take you to the <strong>Reporting Service</strong> homepage.<br>
+<img decoding="async" loading="lazy" alt="post_23" src="/my-docs/assets/images/post_23-1fa38880657f17811bf0337b66be785f.png" width="1215" height="547" class="img_ev3q"></p>
+</li>
+<li>
+<p>In the <strong>Reporting Service</strong> portal, go to <strong>New (+) &gt; Folder</strong> and create the following folders:</p>
+<ul>
+<li>DataSource</li>
+<li>Datasets</li>
+<li>Images</li>
+<li>Reports<br>
+<img decoding="async" loading="lazy" alt="post_37" src="/my-docs/assets/images/post_37-1a46e6ac7a48a861098e133067347e4c.png" width="958" height="424" class="img_ev3q"></li>
+</ul>
+</li>
+<li>
+<p>Go to the <strong>DataSource</strong> folder and upload the <strong><code>nTrackdatastructure.rds</code></strong> file.</p>
+</li>
+<li>
+<p>Now, configure the <strong><code>nTrackdatastructure.rds</code></strong> file by doing the following:</p>
+<ol>
+<li>Click on <strong>More info</strong> and choose <strong>Manage.</strong><br>
+<img decoding="async" loading="lazy" alt="post_38" src="/my-docs/assets/images/post_38-d440b2a6d5d0bb35ab767ec51a3f4e1d.png" width="823" height="219" class="img_ev3q"></li>
+<li>Under the <strong>Connection</strong> tab, enter the following details in the <strong>Connection string</strong> field:<!-- -->
+<ul>
+<li><strong>Data Source:</strong> Provide your server instance name. If you’re unsure, you can find it on the SQL Server Management Studio (SSMS) login screen.</li>
+<li><strong>Initial Catalog:</strong> Enter the target database name.<br>
+<img decoding="async" loading="lazy" alt="post_39" src="/my-docs/assets/images/post_39-06cc7eefe9959049403e0e09fb9cab6e.png" width="774" height="586" class="img_ev3q"></li>
+</ul>
+</li>
+<li>In the <strong>Credentials</strong> tab, choose <strong>Windows user name and password.</strong></li>
+<li>Enter your system username and password, then click <strong>Test connection</strong> to verify.</li>
+<li>If the connection is successful, click <strong>Apply</strong> to save the settings.<br>
+<img decoding="async" loading="lazy" alt="post_40" src="/my-docs/assets/images/post_40-28284e0c07985e423f34e52f05861f3e.png" width="947" height="911" class="img_ev3q"></li>
+</ol>
+</li>
+<li>
+<p>Return to the <strong>Home</strong> page.</p>
+</li>
+<li>
+<p>Navigate to the <strong>Datasets</strong> folder and upload the <strong><code>styles.rds</code></strong> file.</p>
+</li>
+<li>
+<p>Configure the <strong><code>styles.rds</code></strong> file:</p>
+<ol>
+<li>Click on <strong>More info</strong> and select <strong>Manage.</strong></li>
+<li>Go to the <strong>Data Sources</strong> tab and select the <strong><code>nTrackDataSource</code></strong> file from the <strong>DataSource</strong> folder.<br>
+<img decoding="async" loading="lazy" alt="post_41" src="/my-docs/assets/images/post_41-e1a3616841992a36469fc0758254769b.png" width="959" height="492" class="img_ev3q"></li>
+<li>Click <strong>Apply</strong> to save the configuration.</li>
+</ol>
+</li>
+<li>
+<p>Go back to the <strong>Home</strong> page and open the <strong>Reports</strong> folder.</p>
+</li>
+<li>
+<p>Upload the <strong><code>settlementinvoice.rdl</code></strong> file.</p>
+</li>
+<li>
+<p>Configure the <strong><code>settlementinvoice.rdl</code></strong> file:</p>
+<ol>
+<li>Click on <strong>More info</strong> and choose <strong>Manage.</strong><br>
+<img decoding="async" loading="lazy" alt="post_42" src="/my-docs/assets/images/post_42-fd7b9a837fb89f175807bc8b781a83cc.png" width="808" height="232" class="img_ev3q"></li>
+<li>In the <strong>Data Sources</strong> tab, browse and select <strong><code>nTrackDataSource</code></strong> from the <strong>DataSource</strong> folder.<br>
+<img decoding="async" loading="lazy" alt="post_43" src="/my-docs/assets/images/post_43-c92b0632808e4378793abd6241f1afd6.png" width="907" height="513" class="img_ev3q"></li>
+<li>In the <strong>Shared datasets</strong> tab, browse and select <strong><code>Styles</code></strong> from the <strong>Datasets</strong> folder.<br>
+<img decoding="async" loading="lazy" alt="post_44" src="/my-docs/assets/images/post_44-0e3bfec1deda2145e9795bee558a2c90.png" width="840" height="462" class="img_ev3q"></li>
+<li>Save the settings.</li>
+</ol>
+</li>
+<li>
+<p>Return to the <strong>Home</strong> page.</p>
+</li>
+<li>
+<p>Open the <strong>Reports</strong> folder and click on the uploaded <strong><code>settlementinvoice.rdl</code></strong> file.</p>
+</li>
+<li>
+<p>Enter the required parameters to run the report.</p>
+</li>
+<li>
+<p>Click on <strong>View Report</strong>. The report should be generated successfully.<br>
+<img decoding="async" loading="lazy" alt="post_45" src="/my-docs/assets/images/post_45-a567d7df403feb8506d2351943188aa5.png" width="1047" height="262" class="img_ev3q"><br>
+<img decoding="async" loading="lazy" alt="post_46" src="/my-docs/assets/images/post_46-ca76fb32ed66c320097b0fccb9ca8c60.png" width="1047" height="905" class="img_ev3q"></p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="enable-microsoft-internet-information-services-iis-components">Enable Microsoft Internet Information Services (IIS) components<a href="#enable-microsoft-internet-information-services-iis-components" class="hash-link" aria-label="Direct link to Enable Microsoft Internet Information Services (IIS) components" title="Direct link to Enable Microsoft Internet Information Services (IIS) components">​</a></h2>
+<p>nGenue requires that IIS and specific IIS components be enabled on supported Windows operating systems. The setup will not proceed if IIS is not detected and specific IIS components are not enabled.</p>
+<p>To enable IIS and the required IIS components on Windows Server 2016, Windows Server 2019, and Windows Server 2022, complete the following steps:</p>
+<ol>
+<li>
+<p>Open <strong>Control Panel</strong> and click <strong>Programs &gt;</strong> <strong>Programs and Features &gt; Turn Windows features on or off.</strong>
+<img decoding="async" loading="lazy" alt="post_25" src="/my-docs/assets/images/post_25-b31895a0a38a197b1ebfa48bb143a537.png" width="1245" height="445" class="img_ev3q"></p>
+</li>
+<li>
+<p>Enable the following services:
+3. <strong>.NET Framework 3.5 (includes .NET 2.0 and 3.0).</strong></p>
+<ul>
+<li>Expand the <strong>.NET Framework 3.5 (includes .NET 2.0 and 3.0)</strong> feature and select all sub-options.</li>
+</ul>
+<ol start="4">
+<li>Enable  <strong>.NET Framework 4.8 Advanced Services</strong> feature and select all its sub-options.</li>
+<li>Enable <strong>Internet Information Services (IIS).</strong>
+<ul>
+<li>Expand <strong>Internet Information Services (IIS)</strong> feature and select all available options.</li>
+</ul>
+</li>
+<li>Similarly, enable <strong>Internet Information Services Hostable Web Core</strong> service.
+<img decoding="async" loading="lazy" alt="post_26" src="/my-docs/assets/images/post_26-2540ac678dd0c1fa6979c1e841360242.png" width="613" height="533" class="img_ev3q"></li>
+</ol>
+</li>
+<li>
+<p>Once all the required features are selected, click <strong>OK.</strong></p>
+</li>
+<li>
+<p>Windows will apply the changes, and you may be prompted to restart your computer for the features to take effect.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="add-report-api-folder-to-iis">Add Report API folder to IIS<a href="#add-report-api-folder-to-iis" class="hash-link" aria-label="Direct link to Add Report API folder to IIS" title="Direct link to Add Report API folder to IIS">​</a></h2>
+<p>After you enable IIS and the required features, you will need to add the <strong>Report API</strong> folder to the IIS server. To do so, follow the below steps:</p>
+<ol>
+<li>Navigate to the IIS web root folder: <code>C:\inetpub\wwwroot</code></li>
+<li>Copy the <strong>ReportAPI.zip</strong> file an save it in your desktop or preferred location. This file which can be found in the SharePoint foder shared by nGenue admin team previously (Refer step-1 under the <a href="/my-docs/docs/installation_guide/post_installation/ssrs_configure#configuring-the-sql-server-reporting-services">Configuring the SQL Server Reporting Services</a> section).</li>
+<li>Unzip the <strong>ReportAPI.zip</strong> file. Copy the ReportAPI folder.</li>
+<li>Now, go to <code>C:\inetpub\wwwroot.</code> This is the default folder where IIS hosts its websites.</li>
+<li>In the <code>wwwroot</code> folder, paste the ReportAPI folder you copied earlier.</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="iis-manager-configuration">IIS Manager configuration<a href="#iis-manager-configuration" class="hash-link" aria-label="Direct link to IIS Manager configuration" title="Direct link to IIS Manager configuration">​</a></h2>
+<p>To configure IIS:</p>
+<ol>
+<li>Run the <strong>IIS Manager</strong> by pressing the <strong>Windows</strong> key, type <strong>IIS,</strong> and select <strong>Internet Information Services (IIS) Manager</strong> from the search results.</li>
+<li>In the <strong>Connections</strong> pane, right-click the <strong>Sites</strong> node in the tree view, and then click <strong>Add Web Site.</strong>
+<img decoding="async" loading="lazy" alt="post_27" src="/my-docs/assets/images/post_27-3e01dff4d0902886995ef72d9e689339.png" width="914" height="582" class="img_ev3q"></li>
+<li>In the <strong>Add Web Site</strong> dialog box, type a <em>friendly name</em> for your Web site in the <strong>Web site name</strong> box. Example: <em>Report API.</em></li>
+<li>In the <strong>Physical path</strong> box, type the <em>physical path</em> of the Web site&#x27;s folder, or click the <strong>browse</strong> button (...) to browse the file system to find the folder.</li>
+<li>Type <strong>5722</strong> as the port number in the <strong>Port</strong> text box. This will ensure that the Report API is accessed through this specific port.</li>
+<li>After setting the port, click <strong>OK</strong> to complete the configuration.
+<img decoding="async" loading="lazy" alt="post_28" src="/my-docs/assets/images/post_28-2efe2ca190db8b1cdf588284e39212af.png" width="587" height="530" class="img_ev3q"></li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="configure-iis-application-pools">Configure IIS Application Pools<a href="#configure-iis-application-pools" class="hash-link" aria-label="Direct link to Configure IIS Application Pools" title="Direct link to Configure IIS Application Pools">​</a></h2>
+<p>To set up the IIS Application Pools:</p>
+<ol>
+<li>
+<p>In the left navigation panel of <strong>IIS Manager</strong>, click on the <strong>Application Pools</strong> node.</p>
+</li>
+<li>
+<p>From the list of application pools, select <strong>Report API</strong>.</p>
+</li>
+<li>
+<p>In the <strong>Actions</strong> pane, click <strong>Advanced Settings</strong> to open the pool&#x27;s configuration window.<br>
+<img decoding="async" loading="lazy" alt="post_29" src="/my-docs/assets/images/post_29-e80fe98d86b2b7f6e3dbd5f7e98344f6.png" width="836" height="515" class="img_ev3q"></p>
+</li>
+<li>
+<p>In the <strong>Advanced Settings</strong> window, scroll to <strong>Process Model &gt; Identity</strong> to view more options.<br>
+<img decoding="async" loading="lazy" alt="post_30" src="/my-docs/assets/images/post_30-1543b182f927ed819cbcc46d88c6da98.png" width="438" height="545" class="img_ev3q"></p>
+</li>
+<li>
+<p>Change the identity to <strong>Custom account</strong>, then click the <strong>Set</strong> button.<br>
+<img decoding="async" loading="lazy" alt="post_31" src="/my-docs/assets/images/post_31-290a988df75a53a555a9e8c446a23d33.png" width="434" height="253" class="img_ev3q"></p>
+</li>
+<li>
+<p>In the <strong>Set Credentials</strong> pop-up, enter your system <em>username</em> and <em>password</em>, then click <strong>OK</strong>.<br>
+<img decoding="async" loading="lazy" alt="post_32" src="/my-docs/assets/images/post_32-d81307bd1664d5acddf784f3cdc4eb48.png" width="549" height="362" class="img_ev3q"></p>
+</li>
+<li>
+<p>The identity should now reflect the username you provided.<br>
+<img decoding="async" loading="lazy" alt="post_33" src="/my-docs/assets/images/post_33-9fdef6b82b7b3b76bfa7c18ccb5a9e01.png" width="438" height="545" class="img_ev3q"></p>
+</li>
+<li>
+<p>Change the <strong>Load User Profile</strong> setting from <em>True</em> to <strong>False</strong>.</p>
+</li>
+<li>
+<p>Also, change the <strong>Ping Enabled</strong> setting from <em>True</em> to <strong>False</strong>.<br>
+<img decoding="async" loading="lazy" alt="post_34" src="/my-docs/assets/images/post_34-2c64aa5ea68a0d59c0823642e19195a0.png" width="440" height="547" class="img_ev3q"></p>
+</li>
+<li>
+<p>Click <strong>OK</strong> to save your updates.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="configure-webconfig-file">Configure <code>web.config</code> file<a href="#configure-webconfig-file" class="hash-link" aria-label="Direct link to configure-webconfig-file" title="Direct link to configure-webconfig-file">​</a></h2>
+<p>With IIS now configured, the next step is to update the <code>web.config</code> file so that the Report API can connect correctly to your database and report server.</p>
+<ol>
+<li>
+<p>Navigate to the following path to find the <code>web.config</code> file: <strong>Local Disk (C:) &gt; inetpub &gt; wwwroot &gt; Report API &gt; Report API</strong></p>
+</li>
+<li>
+<p>Right-click on the <code>web.config</code> file and open it using <strong>Notepad++</strong> (or any preferred text editor).</p>
+</li>
+<li>
+<p>Locate the <code>&lt;connectionStrings&gt;</code> section and modify it with the following values:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">connectionString=&quot;Server=~&lt;Your_server_instance_name&gt;; </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Database=&lt;Your_database_name&gt;; </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">User Id=&lt;Your_system_username&gt;; </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Password=&lt;Your_system_password&gt;&quot;</span><br></span></code></pre></div></div>
+<p><img decoding="async" loading="lazy" alt="post_47" src="/my-docs/assets/images/post_47-499f6f531878fdc21463fa95668fdbc5.png" width="1536" height="282" class="img_ev3q"></p>
+<p>where:</p>
+<ul>
+<li><code>&lt;Your_server_instance_name&gt;</code>: Provide the name of your SQL server instance. Example: NGILAP0723063</li>
+<li><code>&lt;Your_database_name&gt;</code>: Specify the target database name. Example: nGenueMainlineQA</li>
+<li><code>&lt;Your_system_username&gt;</code>: Input your system username. Example: dipender.sharma</li>
+<li><code>&lt;Your_system_password&gt;</code>: Input your system password.</li>
+</ul>
+</li>
+<li>
+<p>Find the <code>&lt;reportServerUrl&gt;</code> tag and replace its value with the <strong>Web Services URL</strong> listed in the <strong>Report Server Configuration Manager</strong>.<br>
+<img decoding="async" loading="lazy" alt="post_21" src="/my-docs/assets/images/post_21-63df48933a700597922c9d19973b8bfc.png" width="1217" height="1013" class="img_ev3q"><br>
+<img decoding="async" loading="lazy" alt="post_48" src="/my-docs/assets/images/post_48-352e876da61f055e4e569843457f9afc.png" width="1119" height="312" class="img_ev3q"></p>
+</li>
+<li>
+<p>Save the changes to the <code>web.config</code> file.</p>
+</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="browse-the-website">Browse the website<a href="#browse-the-website" class="hash-link" aria-label="Direct link to Browse the website" title="Direct link to Browse the website">​</a></h2>
+<p>With the application pool settings configured, you can now restart the website and verify if the website is working.</p>
+<ol>
+<li>In the <strong>IIS Manager&#x27;s</strong> left navigation tree, expand the <strong>Sites</strong> node and select <strong>Report API.</strong></li>
+<li>Select <strong>Restart</strong> under the <strong>Actions</strong> pane. This will restart the site and apply all the changes.
+<img decoding="async" loading="lazy" alt="post_35" src="/my-docs/assets/images/post_35-eb86badf660c8e248476dda3e376e48b.png" width="914" height="582" class="img_ev3q"></li>
+<li>Browse the Report API website, by clicking  on *<em>Browser <em>:5722 (http)</em></em> link under <strong>Actions &gt; Browser Website</strong> section.
+<img decoding="async" loading="lazy" alt="post_36" src="/my-docs/assets/images/post_36-3cc232c1e90c53c637d669f16246dcd3.png" width="914" height="582" class="img_ev3q"></li>
+<li>A web screen should open in your browser. This confirms that the Report API is now properly configured and running on port <strong>5722.</strong>
+<img decoding="async" loading="lazy" alt="post_49" src="/my-docs/assets/images/post_49-cde7755ceec6b12217b22fe5ae01abfd.png" width="867" height="333" class="img_ev3q">
+<img decoding="async" loading="lazy" alt="post_50" src="/my-docs/assets/images/post_50-b53d07645ad70a3c227173c89e043ee2.png" width="960" height="536" class="img_ev3q"></li>
+</ol>
+<hr></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/my-docs/docs/installation_guide/run_ngenue_application"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Running the nGenue application</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/my-docs/docs/installation_guide/post_installation/edi_configure"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">EDI configuration</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#install-sql-server-reporting-services" class="table-of-contents__link toc-highlight">Install SQL Server Reporting Services</a></li><li><a href="#configure-the-report-server-using-report-server-configuration-manager" class="table-of-contents__link toc-highlight">Configure the report server using Report Server Configuration Manager</a></li><li><a href="#configuring-the-sql-server-reporting-services" class="table-of-contents__link toc-highlight">Configuring the SQL Server Reporting Services</a></li><li><a href="#enable-microsoft-internet-information-services-iis-components" class="table-of-contents__link toc-highlight">Enable Microsoft Internet Information Services (IIS) components</a></li><li><a href="#add-report-api-folder-to-iis" class="table-of-contents__link toc-highlight">Add Report API folder to IIS</a></li><li><a href="#iis-manager-configuration" class="table-of-contents__link toc-highlight">IIS Manager configuration</a></li><li><a href="#configure-iis-application-pools" class="table-of-contents__link toc-highlight">Configure IIS Application Pools</a></li><li><a href="#configure-webconfig-file" class="table-of-contents__link toc-highlight">Configure <code>web.config</code> file</a></li><li><a href="#browse-the-website" class="table-of-contents__link toc-highlight">Browse the website</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Documentation</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/my-docs/docs/intro">Getting Started</a></li><li class="footer__item"><a class="footer__link-item" href="/my-docs/docs/customer-management/overview">Customer Management</a></li><li class="footer__item"><a class="footer__link-item" href="/my-docs/docs/billing/overview">Billing</a></li><li class="footer__item"><a class="footer__link-item" href="/my-docs/docs/etrm/overview">ETRM</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Company</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://ngenue.com" target="_blank" rel="noopener noreferrer" class="footer__link-item">nGenue Website<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/my-docs/docs/testimonials">Customer Testimonials</a></li><li class="footer__item"><a href="https://ngenue.com/blogevents/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Events &amp; News<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.youtube.com/watch?v=HnG4dtuIkmE" target="_blank" rel="noopener noreferrer" class="footer__link-item">Video Demo<svg width="13.5" height="13.5" aria-hidden="true" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a class="footer__link-item" href="/my-docs/docs/intro">Knowledge Base</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 nGenue. Your best choice for wholesale and retail natural gas operations.</div></div></div></footer></div>
+</body>
+</html>
